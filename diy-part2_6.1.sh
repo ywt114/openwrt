@@ -127,10 +127,10 @@ git clone -b master https://github.com/linkease/nas-packages package/lean/nas-pa
 \cp -rf package/lean/nas-packages/network/services/* package/network/services
 \cp -rf package/lean/nas-packages/multimedia package
 \rm -rf package/lean/nas-packages
-# sed -i 's/fw.koolcenter.com\/binary\/ddnsto/github.com\/ywt114\/diy\/releases\/download\/services/g' package/network/services/ddnsto/Makefile
-# sed -i 's/fw.koolcenter.com\/binary\/iStoreEnhance/github.com\/ywt114\/diy\/releases\/download\/services/g' package/network/services/istoreenhance/Makefile
-# sed -i 's/fw0.koolcenter.com\/binary\/LinkEase\/LinuxStorage/github.com\/ywt114\/diy\/releases\/download\/services/g' package/network/services/linkease/Makefile
-# sed -i 's/fw0.koolcenter.com\/binary\/LinkEase\/AutoUpgrade\/linkmount/github.com\/ywt114\/diy\/releases\/download\/services/g' package/network/services/linkmount/Makefile
+sed -i 's/fw.koolcenter.com\/binary\/ddnsto/github.com\/ywt114\/diy\/releases\/download\/services/g' package/network/services/ddnsto/Makefile
+sed -i 's/fw.koolcenter.com\/binary\/iStoreEnhance/github.com\/ywt114\/diy\/releases\/download\/services/g' package/network/services/istoreenhance/Makefile
+sed -i 's/fw0.koolcenter.com\/binary\/LinkEase\/LinuxStorage/github.com\/ywt114\/diy\/releases\/download\/services/g' package/network/services/linkease/Makefile
+sed -i 's/fw0.koolcenter.com\/binary\/LinkEase\/AutoUpgrade\/linkmount/github.com\/ywt114\/diy\/releases\/download\/services/g' package/network/services/linkmount/Makefile
 
 # 创建automake-1.15软连接
 # sudo -E ln -sf /usr/bin/automake /usr/bin/automake-1.15
@@ -154,3 +154,8 @@ sed -i 's/Variable1 = "*.*"/Variable1 = "ywt114"/g' package/lean/luci-app-gpsysu
 sed -i 's/Variable2 = "*.*"/Variable2 = "OpenWrt"/g' package/lean/luci-app-gpsysupgrade/root/usr/bin/upgrade.lua
 sed -i 's/Variable3 = "*.*"/Variable3 = "x86_64"/g' package/lean/luci-app-gpsysupgrade/root/usr/bin/upgrade.lua
 sed -i 's/Variable4 = "*.*"/Variable4 = "6.1"/g' package/lean/luci-app-gpsysupgrade/root/usr/bin/upgrade.lua
+
+回退v2ray-plugin到2024年08月24日旧版本
+cd package/lean/small/v2ray-plugin
+git reset --hard 82eac7940f75b6ed59523c728adca179ab001aaf
+cd ../../../..
