@@ -53,7 +53,10 @@ jobs:
       env:
         DEBIAN_FRONTEND: noninteractive
       run: |
+        docker rmi $(docker images -q) || true
+        sudo -E rm -rf /usr/share/dotnet /etc/mysql /etc/php /etc/apt/sources.list.d /usr/local/lib/android
         sudo -E rm -rf "$AGENT_TOOLSDIRECTORY" || true
+        sudo -E apt-mark hold grub-efi-amd64-signed
         sudo -E apt -yqq update
         sudo -E apt -yqq full-upgrade
         sudo -E apt -yqq install $(curl -fsSL https://raw.githubusercontent.com/ywt114/diy/main/depends | tr '\n' ' ') || true
